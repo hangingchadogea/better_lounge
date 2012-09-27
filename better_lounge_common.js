@@ -280,7 +280,7 @@ function fixQuoteLinksJQ()
 					e.preventDefault();
 					$('.textarea').val(postText);
 					$('#fastreply').css('display',"block");  // need to do it this way instead of using .show() so the toggle button still works
-					scrollTo(0,99999999999);
+					window.scrollTo(0,99999999999);
 				}
 			);
 		}
