@@ -1,0 +1,50 @@
+<html>
+<head><title>Better Lounge Options</title></head>
+<script type="text/javascript">
+
+// Saves options to localStorage.
+function save_options() {
+  var text_area = document.getElementById("autocollapse");
+  var autocollapse = text_area.value;
+  localStorage["autocollapse"] = autocollapse;
+
+  var fast_quote = document.getElementById("fast_quote").checked;
+  localStorage["fast_quote"] = fast_quote;
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options Saved.";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 750);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var autocollapse = localStorage["autocollapse"];
+  if (autocollapse == undefined) {
+    autocollapse="0";
+  }
+  var text_area = document.getElementById("autocollapse");
+  text_area.value = autocollapse;
+
+  var fast_quote = string_to_bool(localStorage["fast_quote"]);
+  document.getElementById("fast_quote").checked = fast_quote;
+}
+
+function string_to_bool(string){
+  return (string.toLowerCase().charAt(0) == "t" );
+}
+</script>
+
+<body onload="restore_options()">
+
+Ziggurat level to auto-collapse: <input type="text" id="autocollapse" name="autocollapse" />
+<p>
+"Quote" link opens in Fast Reply box (now with working!):
+<input type="checkbox" id="fast_quote" name="fast_quote">
+</p>
+<button onclick="save_options()">Save</button>
+<p id="status"></p>
+</body>
+</html>

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat better_lounge_gm_header.js better_lounge_common.js > better_lounge.user.js

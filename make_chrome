@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat better_lounge_chrome_header.js better_lounge_common.js > content_script.js
