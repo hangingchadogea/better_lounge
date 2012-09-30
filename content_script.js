@@ -1,17 +1,27 @@
-chrome.extension.sendRequest({method: "get_configuration"}, actually_do_things);
+chrome.storage.sync.get(["autocollapse", "fast_quote"], actually_do_things);
 
-function actually_do_things(response){
+function actually_do_things(configuration){
+
   cleanUpLinks();
   buildFormattingButtons();
 
-  if (response.configuration.fast_quote != "false")
+  if (configuration) {
+    console.log("configuration seems to be defined.");
+  }
+  else {
+    console.log("configuration seems undefined.");
+    var configuration = new Array();
+    configuration.fast_quote = true;
+    configuration.autocollapse = 4;
+  }
+
+  if (configuration.fast_quote)
     fixQuoteLinksJQ();
 
   collapsibleZiggies();
-  var autocollapse = parseInt(response.configuration.autocollapse);
 
-  if (autocollapse != NaN && autocollapse > 0)
-    collapseZiggies(autocollapse);
+  if (configuration.autocollapse > 0)
+    collapseZiggies(configuration.autocollapse);
 
   
 }
