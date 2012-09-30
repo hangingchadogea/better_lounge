@@ -394,7 +394,6 @@ function fixQuoteLinksJQ()
 				.children('td').eq(0)
 				.text().replace("Posted: ","");
 			date = convertDate(date);
-                        console.log('Is this shit even running?');
                         var author = $(this).parents('tbody').eq(1)
                                 .children('tr').eq(1)
                                 .children('td').eq(0)
@@ -408,7 +407,7 @@ function fixQuoteLinksJQ()
 					e.preventDefault();
 					$('.textarea').val(postText);
 					$('#fastreply').css('display',"block");  // need to do it this way instead of using .show() so the toggle button still works
-					window.scrollTo(0,99999999999);
+					window.scrollTo(0, document.body.scrollHeight);
 				}
 			);
 		}
