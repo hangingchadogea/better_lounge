@@ -23,18 +23,23 @@ function restore_options() {
 }
 
 function keep_restoring_options(configuration){
-  if (configuration) {
+  if (configuration && configuration.autocollapse != undefined) {
+    autocollapse = configuration.autocollapse;
   }
   else {
-    var configuration = new Array();
-    configuration.fast_quote = true;
-    configuration.autocollapse = 4;
+    autocollapse = 4;
+  }
+  if (configuration && configuration.fast_quote != undefined) {
+    fast_quote = configuration.fast_quote;
+  }
+  else {
+    fast_quote = true;
   }
 
   var text_area = document.getElementById("autocollapse");
-  text_area.value = configuration.autocollapse;
+  text_area.value = autocollapse;
 
-  document.getElementById("fast_quote").checked = configuration.fast_quote;
+  document.getElementById("fast_quote").checked = fast_quote;
 }
 
 function string_to_bool(string){

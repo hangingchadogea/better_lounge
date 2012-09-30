@@ -2,27 +2,28 @@ chrome.storage.sync.get(["autocollapse", "fast_quote"], actually_do_things);
 
 function actually_do_things(configuration){
 
+  if (configuration && configuration.autocollapse != undefined) {
+    autocollapse = configuration.autocollapse;
+  }
+  else {
+    autocollapse = 4;
+  }
+  if (configuration && configuration.fast_quote != undefined) {
+    fast_quote = configuration.fast_quote;
+  }
+  else {
+    fast_quote = true;
+  }
+
   cleanUpLinks();
   buildFormattingButtons();
 
-  if (configuration) {
-    console.log("configuration seems to be defined.");
-  }
-  else {
-    console.log("configuration seems undefined.");
-    var configuration = new Array();
-    configuration.fast_quote = true;
-    configuration.autocollapse = 4;
-  }
-
-  if (configuration.fast_quote)
+  if (fast_quote)
     fixQuoteLinksJQ();
 
   collapsibleZiggies();
 
-  if (configuration.autocollapse > 0)
-    collapseZiggies(configuration.autocollapse);
-
-  
+  if (autocollapse > 0)
+    collapseZiggies(autocollapse);
 }
 
