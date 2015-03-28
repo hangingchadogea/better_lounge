@@ -4,6 +4,8 @@
 // @include        http://www.baseballthinkfactory.org/files/forums/viewthread/*
 // @include        http://www.baseballthinkfactory.org/forums/viewthread/*
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js
+// @grant          GM_getValue
+// @grant          GM_setValue
 // ==/UserScript==
 
 $(document).ready(main);
