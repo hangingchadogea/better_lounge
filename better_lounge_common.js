@@ -117,9 +117,9 @@ function wrapTags(prefix,suffix)
 
 function urlTag()
 {
-	var url = prompt("Enter the hyperlink URL","http://");
+	var url = prompt("Enter the hyperlink URL","https://");
 	
-	if(!url || url == "http://" || url == null)
+	if(!url || url == "https://" || url == null)
 	{
 		return;
 	}
@@ -244,7 +244,7 @@ function collapseZiggies(levelToCollapse)
 
 function cleanUpLinks()
 {
-	$('a[href^="http://www.baseballthinkfactory.org/?URL="]').each(
+	$('a[href^="https://www.baseballthinkfactory.org/?URL="]').each(
 		function()
 		{
 			$(this).attr('href',decodeURIComponent($(this).attr('href').substring(41)));
@@ -255,7 +255,7 @@ function cleanUpLinks()
 function fixQuoteLinksJQ()
 {
 
-	$('a[href^="http://www.baseballthinkfactory.org/forums/quotereply"]').each(
+	$('a[href^="https://www.baseballthinkfactory.org/forums/quotereply"]').each(
 		function()
 		{
 			var post = $(this).parents('tbody').eq(1)
