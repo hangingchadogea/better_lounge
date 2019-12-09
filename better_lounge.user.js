@@ -497,7 +497,8 @@ function cleanupJQ(element)
 				prefix = "[color="+element.css('color')+"]";
 				suffix = "[/color]";
 			}
-			if(element.css('font-size') != "")
+			if(element.css('font-size') != "" &&
+			   element.css('font-size') != "12px")
 			{
 				switch (element.css('font-size'))
 				{
