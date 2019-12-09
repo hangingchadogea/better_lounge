@@ -12,7 +12,7 @@ function actually_do_things(configuration){
     fast_quote = configuration.fast_quote;
   }
   else {
-    fast_quote = true;
+    fast_quote = false;
   }
 
   cleanUpLinks();
