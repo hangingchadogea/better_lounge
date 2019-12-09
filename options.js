@@ -33,7 +33,7 @@ function keep_restoring_options(configuration){
     fast_quote = configuration.fast_quote;
   }
   else {
-    fast_quote = true;
+    fast_quote = false;
   }
 
   var text_area = document.getElementById("autocollapse");
