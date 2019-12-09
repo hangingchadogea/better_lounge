@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pushd ..
+zip -r better_lounge.zip better_lounge -x *.git*
+popd
+ls -l ../better_lounge.zip
