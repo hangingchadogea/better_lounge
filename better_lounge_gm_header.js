@@ -21,14 +21,14 @@ function main()
 }
 
 function createSettingsPage()
-{	
+{
 	$('#footer').append('<div id="loungePrefs"></div>');
 	$('#loungePrefs').append('<div id="loungePrefsToggleDiv"><a id="loungePrefsToggle"></a></div><div id="loungePrefsContainer"><div id="loungePrefsHeader"></div><div id="loungePrefsBody"></div></div>');
-	
+
 	// initially show the toggle div, not the body div
 	$('#loungePrefsToggleDiv').show();
 	$('#loungePrefsContainer').hide();
-	
+
 	// build the container
 	$('#loungePrefsContainer')
 		.css(
@@ -38,8 +38,8 @@ function createSettingsPage()
 				'width': '450px'
 			}
 		);
-	
-	
+
+
 	// build content for the header
 	$('#loungePrefsHeader')
 		.css(
@@ -49,7 +49,6 @@ function createSettingsPage()
 		)
 		.addClass('tableRowHeading')
 		.append('<b>Lounge Preferences</b>');
-		
 	// build content for the body
 	$('#loungePrefsBody')
 		.css(
@@ -69,7 +68,7 @@ function createSettingsPage()
 		}
 		);
 	$('.loungePrefsButtonTable').css('margin','0 auto');
-	
+
 	// configure link click event
 	$('#loungePrefsToggle').text('Edit Lounge Preferences')
 		.attr('href','#')
@@ -81,14 +80,14 @@ function createSettingsPage()
 				$('#autoCollapseLevel').val(GM_getValue("autoCollapseLevel"),"");
 				if(GM_getValue("refreshAfterSave",false))
 				{
-					$('#refreshAfterSave').attr('checked',true); 
+					$('#refreshAfterSave').attr('checked',true);
 				}
 				$('#loungePrefsToggleDiv').hide();
-				$('#loungePrefsContainer').show();	
+				$('#loungePrefsContainer').show();
 				scrollTo(0,99999999999);
 			}
 		);
-	
+
 	// configure save button click event
 	$('#loungePrefsSave').click(
 		function(e)
@@ -116,7 +115,7 @@ function createSettingsPage()
 			$('#loungePrefsContainer').hide();
 		}
 	);
-	
+
 	// configure cancel button click event
 	$('#loungePrefsCancel').click(
 		function(e)
@@ -127,4 +126,3 @@ function createSettingsPage()
 		}
 	);
 }
-
