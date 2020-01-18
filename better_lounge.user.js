@@ -45,6 +45,7 @@ function afterGetValue(configurationJSON)
 	collapsibleZiggies();
 	collapseZiggies(autoCollapseLevel);
 	buildFormattingButtons();
+	resizePosts(10);
 }
 
 function createSettingsPage(autoCollapseLevel, refreshAfterSave)
@@ -1126,4 +1127,34 @@ function isDST(d) {
 		rV=(o3==o1)?0:1;
    }
 	return rV;	
+}
+
+function resizePosts(offset) {	
+  if (offset == 0) {
+    return;
+  }
+
+  $('.post').each(function() {
+    var p = $(this).children('p');
+    console.log("Considering the element with innerText " + p.text());
+    /*
+    if (!p) {
+      console.log("uh that element was nothing?");
+      return;
+    }
+    if (!p.style) {
+      console.log("uh that style was nothing?");
+      return;
+    }
+    */
+    var curSizePx = p.css("font-size");
+    if(curSizePx) {
+      var curSizeInt = parseInt(curSizePx.replace("px",""));
+    } else {
+      var curSizeInt = 12;
+    }
+    var newSize = (curSizeInt + offset) + "px";
+    console.log("Increasing element's size from " + curSizeInt + " to " + newSize);
+    p.css("font-size", newSize);
+  });
 }
