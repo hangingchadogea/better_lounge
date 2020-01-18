@@ -474,3 +474,23 @@ function isDST(d) {
    }
 	return rV;	
 }
+
+function resizeText(offset) {	
+  if (offset == 0) {
+    return;
+  }
+
+  // adapted from https://marcos.kirsch.mx/2012/04/29/font-size-bookmarklets/
+  var p=document.getElementsByTagName('*');
+  for(i=0;i<p.length;i++){
+    if(p[i].style.fontSize){
+      var s=parseInt(p[i].style.fontSize.replace("px",""));
+    }
+    else {
+      var s=12;
+    }
+    s+=offset;
+    p[i].style.fontSize=s+"px";
+    p[i].style.whiteSpace="normal";
+  }
+}

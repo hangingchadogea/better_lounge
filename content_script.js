@@ -1,4 +1,4 @@
-chrome.storage.sync.get(["autocollapse", "fast_quote"], actually_do_things);
+chrome.storage.sync.get(["autocollapse", "fast_quote", "resize_offset"], actually_do_things);
 
 function actually_do_things(configuration){
 
@@ -15,6 +15,13 @@ function actually_do_things(configuration){
     fast_quote = false;
   }
 
+  if (configuration && configuration.resize_offset != undefined) {
+    resize_offset = configuration.resize_offset;
+  }
+  else {
+    resize_offset = 0;
+  }
+
   cleanUpLinks();
   buildFormattingButtons();
 
@@ -25,6 +32,11 @@ function actually_do_things(configuration){
 
   if (autocollapse > 0)
     collapseZiggies(autocollapse);
+
+  if (resize_offset) {
+    console.log("resizing text by " + resize_offset);
+    resizeText(resize_offset);
+  }
 }
 
 function buildFormattingButtons()
@@ -502,4 +514,24 @@ function isDST(d) {
 		rV=(o3==o1)?0:1;
    }
 	return rV;	
+}
+
+function resizeText(offset) {	
+  if (offset == 0) {
+    return;
+  }
+
+  // adapted from https://marcos.kirsch.mx/2012/04/29/font-size-bookmarklets/
+  var p=document.getElementsByTagName('*');
+  for(i=0;i<p.length;i++){
+    if(p[i].style.fontSize){
+      var s=parseInt(p[i].style.fontSize.replace("px",""));
+    }
+    else {
+      var s=12;
+    }
+    s+=offset;
+    p[i].style.fontSize=s+"px";
+    p[i].style.whiteSpace="normal";
+  }
 }

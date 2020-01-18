@@ -45,6 +45,9 @@ function afterGetValue(configurationJSON)
 	collapsibleZiggies();
 	collapseZiggies(autoCollapseLevel);
 	buildFormattingButtons();
+	// uncomment these to try it. not tested.
+	// var resizeOffset = 1;
+	// resizeText(resizeOffset);
 }
 
 function createSettingsPage(autoCollapseLevel, refreshAfterSave)
