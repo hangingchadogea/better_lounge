@@ -45,7 +45,7 @@ function afterGetValue(configurationJSON)
 	collapsibleZiggies();
 	collapseZiggies(autoCollapseLevel);
 	buildFormattingButtons();
-	resizePosts(10);
+	resizeText(20);
 }
 
 function createSettingsPage(autoCollapseLevel, refreshAfterSave)
