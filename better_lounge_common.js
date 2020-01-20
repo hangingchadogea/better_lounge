@@ -475,29 +475,21 @@ function isDST(d) {
 	return rV;	
 }
 
-function resizePosts(offset) {	
+function resizeText(offset) {	
   if (offset == 0) {
     return;
   }
 
-  var p=document.getElementsByTagName('*');for(i=0;i<p.length;i++){if(p[i].style.fontSize){var s=parseInt(p[i].style.fontSize.replace("px",""));}else{var s=12;}s+=offset;p[i].style.fontSize=s+"px"}
-/*
-  $('.post').each(resizeOnePost);
-
-  function resizeOnePost(postNonJQ) {
-    $(postNonJQ).find('p')
-*/
-}
-
-function resizeFont(element, offset) {
-  console.log("Trying to resize an element with innerText " + element.text());
-  var curSizePx = element.css("font-size");
-  if(curSizePx) {
-    var curSizeInt = parseInt(curSizePx.replace("px",""));
-  } else {
-    var curSizeInt = 12;
+  // adapted from https://marcos.kirsch.mx/2012/04/29/font-size-bookmarklets/
+  var p=document.getElementsByTagName('*');
+  for(i=0;i<p.length;i++){
+    if(p[i].style.fontSize){
+      var s=parseInt(p[i].style.fontSize.replace("px",""));
+    }
+    else {
+      var s=12;
+    }
+    s+=offset;
+    p[i].style.fontSize=s+"px";
+    p[i].style.whiteSpace="normal";
   }
-  var newSizeStr = (curSizeInt + offset) + "px";
-  console.log("Increasing element's size from " + curSizeInt + " to " + newSizeStr);
-  element.css("font-size", newSizeStr);
-}
