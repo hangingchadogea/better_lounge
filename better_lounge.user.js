@@ -1147,3 +1147,4 @@ function resizeText(offset) {
     p[i].style.fontSize=s+"px";
     p[i].style.whiteSpace="normal";
   }
+}
