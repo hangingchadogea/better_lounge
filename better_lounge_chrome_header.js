@@ -25,5 +25,7 @@ function actually_do_things(configuration){
 
   if (autocollapse > 0)
     collapseZiggies(autocollapse);
+
+  resizePosts(20);
 }
 

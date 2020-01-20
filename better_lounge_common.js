@@ -480,27 +480,24 @@ function resizePosts(offset) {
     return;
   }
 
-  $('.post').each(function() {
-    var p = $(this).children('p');
-    console.log("Considering the element with innerText " + p.text());
-    /*
-    if (!p) {
-      console.log("uh that element was nothing?");
-      return;
-    }
-    if (!p.style) {
-      console.log("uh that style was nothing?");
-      return;
-    }
-    */
-    var curSizePx = p.css("font-size");
-    if(curSizePx) {
-      var curSizeInt = parseInt(curSizePx.replace("px",""));
-    } else {
-      var curSizeInt = 12;
-    }
-    var newSize = (curSizeInt + offset) + "px";
-    console.log("Increasing element's size from " + curSizeInt + " to " + newSize);
-    p.css("font-size", newSize);
-  });
+  var p=document.getElementsByTagName('*');for(i=0;i<p.length;i++){if(p[i].style.fontSize){var s=parseInt(p[i].style.fontSize.replace("px",""));}else{var s=12;}s+=offset;p[i].style.fontSize=s+"px"}
+/*
+  $('.post').each(resizeOnePost);
+
+  function resizeOnePost(postNonJQ) {
+    $(postNonJQ).find('p')
+*/
+}
+
+function resizeFont(element, offset) {
+  console.log("Trying to resize an element with innerText " + element.text());
+  var curSizePx = element.css("font-size");
+  if(curSizePx) {
+    var curSizeInt = parseInt(curSizePx.replace("px",""));
+  } else {
+    var curSizeInt = 12;
+  }
+  var newSizeStr = (curSizeInt + offset) + "px";
+  console.log("Increasing element's size from " + curSizeInt + " to " + newSizeStr);
+  element.css("font-size", newSizeStr);
 }
