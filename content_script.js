@@ -1,4 +1,4 @@
-chrome.storage.sync.get(["autocollapse", "fast_quote"], actually_do_things);
+chrome.storage.sync.get(["autocollapse", "fast_quote", "resize_offset"], actually_do_things);
 
 function actually_do_things(configuration){
 
@@ -15,6 +15,13 @@ function actually_do_things(configuration){
     fast_quote = false;
   }
 
+  if (configuration && configuration.resize_offset != undefined) {
+    resize_offset = configuration.resize_offset;
+  }
+  else {
+    resize_offset = 0;
+  }
+
   cleanUpLinks();
   buildFormattingButtons();
 
@@ -25,6 +32,11 @@ function actually_do_things(configuration){
 
   if (autocollapse > 0)
     collapseZiggies(autocollapse);
+
+  if (resize_offset) {
+    console.log("resizing text by " + resize_offset);
+    resizeText(resize_offset);
+  }
 }
 
 function buildFormattingButtons()
